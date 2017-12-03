@@ -52,10 +52,34 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutolistItemCreatingJob.cs" />
+    <Compile Include="LookupList\EventReceiver1\EventReceiver1.cs" />
+    <Compile Include="SPTestGlobalParameters.cs" />
+    <Compile Include="Features\mainFeature\mainFeature.EventReceiver.cs">
+      <DependentUpon>mainFeature.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Features\timerJobFeature\timerJobFeature.EventReceiver.cs">
+      <DependentUpon>timerJobFeature.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Features\timerJobFeature\timerJobFeature.feature">
+      <FeatureId>{a61b1395-b4bc-43f1-a02d-3257adbc64e0}</FeatureId>
+    </None>
+    <None Include="Features\mainFeature\mainFeature.feature">
+      <FeatureId>{cfd727e3-14df-4a47-959c-cda61e1666b1}</FeatureId>
+    </None>
     <None Include="key.snk" />
+    <None Include="AutoList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{903a9268-bfe0-4edc-8818-f3960eb65141}</SharePointProjectItemId>
+    </None>
+    <None Include="LookupList\EventReceiver1\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2c9b86f1-172e-4c0e-be64-cb35ae016456}</SharePointProjectItemId>
+    </None>
+    <None Include="LookupList\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1a7172f7-7287-466f-ada6-23459875dc18}</SharePointProjectItemId>
+    </None>
     <None Include="Package\Package.package">
       <PackageId>{5ef42a32-5591-4511-b3ae-64a25c96ac04}</PackageId>
     </None>
@@ -63,8 +87,20 @@
       <DependentUpon>Package.package</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Content Include="Features\timerJobFeature\timerJobFeature.Template.xml">
+      <DependentUpon>timerJobFeature.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\mainFeature\mainFeature.Template.xml">
+      <DependentUpon>mainFeature.feature</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="AutoList\Elements.xml" />
+    <Content Include="AutoList\Schema.xml" />
+    <Content Include="LookupList\Elements.xml" />
+    <Content Include="LookupList\EventReceiver1\Elements.xml" />
+    <Content Include="LookupList\Schema.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
